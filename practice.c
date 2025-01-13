@@ -227,4 +227,47 @@
 
 
 
-
+// bool ispossible(int arr[], int size, int num, int mid){
+//     int laspos = arr[0];
+//     int cowcount = 1;
+//     for(int i =0; i < size; i++){
+//         if(arr[i] - laspos >= mid){
+//             cowcount++;
+//             if(cowcount == num){
+//                 return true;
+//             }
+//             laspos = arr[i];
+//         }
+//     }
+//     return false;
+// }
+// int main(){
+//     int size;
+//     printf("enter size of array: ");
+//     scanf("%d", &size);
+//     int num;
+//     printf("enter num of aggressive cows: ");
+//     scanf("%d", &num);
+//     int arr[size];
+//     for(int i = 0; i < size; i++){
+//         scanf("%d", &arr[i]);
+//     }
+//     int end = -1;
+//     for(int i = 0; i < size; i++){
+//         end = max(end, arr[i]);
+//     }
+//     int start = 0;
+//     int ans = -1;
+//     while(start <= end){
+//         int mid = start + (end - start)/2;
+//         if(ispossible(arr, size, num, mid )){
+//             ans = mid;
+//             end = mid -1 ;
+//         }
+//         else{
+//             start = mid + 1;
+//         }
+//     }
+//     printf("the ans is: %d", ans);
+//     return 0;
+// }
