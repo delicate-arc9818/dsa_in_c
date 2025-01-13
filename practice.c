@@ -1,5 +1,5 @@
-// #include <stdio.h>
-// #include <stdbool.h>
+#include <stdio.h>
+#include <stdbool.h>
 
 
 // //LINEAR SEARCH
@@ -118,3 +118,113 @@
 //     printf("sqrt is: %.lf", ans);
 //     return 0;
 // }
+
+
+
+
+//BOOK ALLOCATION PROBLEM
+
+
+// bool ispossible(int arr[], int mid, int size, int students ){
+//     int pagesum = 0;
+//     int studentcount = 1;
+//     for(int i = 0; i <  size; i++){
+//         if(pagesum + arr[i] <= mid){
+//             pagesum+=arr[i];
+//         }
+//         else{
+//             studentcount++;
+//             if(studentcount > students){
+//                 return false;
+//             }
+//             pagesum = arr[i];
+//         }
+//     }
+//     return true;
+// }
+// int main(){
+//     int size, students;
+//     int ans = -1;
+//     printf("enter size of array: ");
+//     scanf("%d", &size);
+//     int arr[size];
+//     for(int i = 0; i < size; i++){
+//         scanf("%d", &arr[i]);
+//     }
+//     printf("enter number of students: ");
+//     scanf("%d", &students);
+//     int start = 0;
+//     int end = 0;
+//     for(int i = 0; i < size; i++){
+//         end+=arr[i];
+//     }
+//     while(start <= end){
+//         int mid = start + (end - start)/2;
+//         if(ispossible(arr, mid, size, students)){
+//             ans = mid;
+//             end = mid - 1;
+//         }
+//         else{
+//             start = mid + 1;
+//         }
+//     }
+//     printf("the ans is: %d", ans);
+//     return 0;
+// }
+
+
+
+
+//PAINTERS PARTITIAN PROBLEM
+
+// bool ispossible(int arr[], int size, int num, int mid){
+//     int capacity = 0;
+//     int painters = 1;
+//     for(int i = 0; i < size; i++){
+//         if(capacity + arr[i] <= mid){
+//             capacity+=arr[i];
+//         }
+//         else{
+//             painters++;
+//             if(painters > num){
+//                 return false;
+//             }
+//             capacity = arr[i];
+//         }
+//     }
+//     return true;
+// }
+// int main(){
+//     int size;
+//     printf("enter size of array: ");
+//     scanf("%d", &size);
+//     int num;
+//     printf("enter num of painters: ");
+//     scanf("%d", &num);
+//     int arr[size];
+//     for(int i = 0; i < size; i++){
+//         scanf("%d", &arr[i]);  
+//     }
+//     int end = 0;
+//     for(int i = 0; i < size; i++){
+//         end+=arr[i];
+//     }
+//     int start = 0;
+//     int ans = -1;
+//     while(start <= end){
+//         int mid = start + (end - start)/2;
+//         if(ispossible(arr, size, num, mid)){
+//             ans = mid;
+//             end = mid -1;
+//         }
+//         else{
+//             start = mid + 1;
+//         }
+//     }
+//     printf("the ans is: %d", ans);
+//     return 0;
+// }
+
+
+
+
