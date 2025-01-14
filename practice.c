@@ -271,3 +271,41 @@
 //     printf("the ans is: %d", ans);
 //     return 0;
 // }
+
+
+
+
+
+//SELECTION SORT
+
+
+// void selectionsort(int arr[], int size){
+//     for(int i = 0; i < size - 1; i++){
+//         int minidx = i;
+//         for(int j = i + 1; j < size; j++){
+//             if(arr[j] < arr[minidx]){
+//                 minidx = j;
+//             }
+//         }
+//         int temp = arr[minidx];
+//         arr[minidx] = arr[i];
+//         arr[i] = temp;
+//     }
+// }
+// void printarray(int arr[], int size){
+//     for(int i = 0; i < size; i++){
+//         printf("%d ", arr[i]);
+//     }
+// }
+// int main(){
+//     int size;
+//     printf("enter size of array:");
+//     scanf("%d", &size);
+//     int arr[size];
+//     for(int i = 0; i < size; i++){
+//         scanf("%d", &arr[i]);
+//     }
+//     selectionsort(arr, size);
+//     printarray(arr, size);
+//     return 0;
+// }
