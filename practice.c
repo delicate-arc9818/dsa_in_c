@@ -345,3 +345,79 @@
 //     printarray(arr, size);
 //     return 0;
 // }
+
+
+
+
+
+//INSERTION SORT
+
+
+// void insertionsort(int arr[], int size){
+//     for(int i = 1; i < size; i++){
+//         int temp = arr[i];
+//         int j = i - 1;
+//         while((j>=0) && (arr[j] > temp)){
+//             arr[j+1] = arr[j];
+//             j--;
+//         }
+//         arr[j+1] = temp;
+//     }
+// }
+// void printarray(int arr[], int size){
+//     for(int i = 0; i < size; i++){
+//         printf("%d ", arr[i]);
+//     }
+// }
+// int main(){
+//     int size;
+//     printf("enter size of array: ");
+//     scanf("%d", &size);
+//     int arr[size];
+//     for(int i = 0; i < size; i++){
+//         scanf("%d", &arr[i]);
+//     }
+//     insertionsort(arr, size);
+//     printarray(arr, size);
+//     return 0;
+// }
+
+
+
+
+
+//REVERSE ARRAY
+
+
+// void reversearray(int arr[], int size){
+//     int start = 0;
+//     int end = size - 1;
+//     while(start <= end){
+//         int temp = arr[end];
+//         arr[end] = arr[start];
+//         arr[start] = temp;
+//         start++;
+//         end--;
+//     }
+// }
+// void printarray(int arr[], int size){
+//     for(int i = 0; i < size; i++){
+//         printf("%d ", arr[i]);
+//     }
+// }
+// int main(){
+//     int size;
+//     printf("enter size of array: ");
+//     scanf("%d", &size);
+//     int arr[size];
+//     for(int i = 0; i < size; i++){
+//         scanf("%d", &arr[i]);
+//     }
+//     reversearray(arr, size);
+//     printarray(arr, size);
+//     return 0;
+// }
+
+
+
+
