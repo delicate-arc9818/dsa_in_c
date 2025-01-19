@@ -437,3 +437,69 @@
 //     }
 //     return 0;
 // }
+
+
+
+
+//ROTATE ARRAY
+
+// void printArray(int brr[], int size){
+//     for(int i = 0; i < size; i++){
+//         printf("%d ", brr[i]);
+//     }
+// }
+
+// void rotateArray(int arr[], int size, int roteteBy, int brr[]){
+//     for(int i = 0; i < size; i++){
+//         brr[i] = arr[(i + roteteBy)%size];
+//     }
+// }
+
+// int main(){
+//     int size;
+//     printf("enter size of array: ");
+//     scanf("%d", &size);
+//     int arr[size];
+//     for(int i = 0; i < size; i++){
+//         scanf("%d", &arr[i]);
+//     }
+//     int rotateBy;
+//     printf("rotate array by:");
+//     scanf("%d", &rotateBy);
+//     int brr[size];
+//     rotateArray(arr, size, rotateBy, brr);
+//     printArray(brr, size);
+//     return 0;
+// }
+
+
+
+
+//ARRAY IS SORTED ?
+
+bool sortedRotated(int arr[], int size){
+    int count  = 0;
+    for(int i = 1; i < size; i++){
+        if(arr[i-1] < arr[i]){
+            count++;
+        }
+    }
+    if(arr[size-1] > arr[0]){
+        count++;
+    }
+    return count <= 1;
+}
+
+int main(){
+    int size;
+    printf("enter size of array: ");
+    scanf("%d", &size);
+    int arr[size];
+    for(int i = 0; i < size; i++){
+        scanf("%d", &arr[i]);
+    }
+    if(sortedRotated(arr, size)){
+        printf("")
+    }
+    return 0;
+}
