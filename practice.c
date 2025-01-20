@@ -477,32 +477,77 @@
 
 //ARRAY IS SORTED ?
 
-bool sortedRotated(int arr[], int size){
-    int count  = 0;
-    for(int i = 1; i < size; i++){
-        if(arr[i-1] < arr[i]){
-            count++;
-        }
-    }
-    if(arr[size-1] > arr[0]){
-        count++;
-    }
-    return count <= 1;
-}
+// bool sortedRotated(int arr[], int size){
+//     int count  = 0;
+//     for(int i = 1; i < size; i++){
+//         if(arr[i-1] < arr[i]){
+//             count++;
+//         }
+//     }
+//     if(arr[size-1] > arr[0]){
+//         count++;
+//     }
+//     return count <= 1;
+// }
 
-int main(){
-    int size;
-    printf("enter size of array: ");
-    scanf("%d", &size);
-    int arr[size];
-    for(int i = 0; i < size; i++){
-        scanf("%d", &arr[i]);
-    }
-    if(sortedRotated(arr, size)){
-        printf("array is sorted");
-    }
-    else{
-        printf("array is not sorted");
-    }
-    return 0;
-}
+// int main(){
+//     int size;
+//     printf("enter size of array: ");
+//     scanf("%d", &size);
+//     int arr[size];
+//     for(int i = 0; i < size; i++){
+//         scanf("%d", &arr[i]);
+//     }
+//     if(sortedRotated(arr, size)){
+//         printf("array is sorted");
+//     }
+//     else{
+//         printf("array is not sorted");
+//     }
+//     return 0;
+// }
+
+
+
+
+//ADDING TWO ARRAYS
+
+// int main() {
+//     int n;
+//     printf("Enter the size of the arrays: ");
+//     scanf("%d", &n);
+
+//     int array1[n], array2[n], sum[n + 1];
+//     int carry = 0;
+
+//     printf("Enter elements of the first array:\n");
+//     for (int i = 0; i < n; i++) {
+//         printf("Element %d: ", i + 1);
+//         scanf("%d", &array1[i]);
+//     }
+
+//     printf("Enter elements of the second array:\n");
+//     for (int i = 0; i < n; i++) {
+//         printf("Element %d: ", i + 1);
+//         scanf("%d", &array2[i]);
+//     }
+
+//     for (int i = 0; i < n; i++) {
+//         int current_sum = array1[i] + array2[i] + carry;
+//         sum[i] = current_sum % 10;
+//         carry = current_sum / 10;
+//     }
+
+//     if (carry > 0) {
+//         sum[n] = carry;
+//         n++;
+//     }
+
+//     printf("Sum of the two arrays:\n");
+//     for (int i = 0; i < n; i++) {
+//         printf("%d ", sum[i]);
+//     }
+//     printf("\n");
+
+//     return 0;
+// }
