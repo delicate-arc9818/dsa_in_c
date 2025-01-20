@@ -499,7 +499,10 @@ int main(){
         scanf("%d", &arr[i]);
     }
     if(sortedRotated(arr, size)){
-        printf("")
+        printf("array is sorted");
+    }
+    else{
+        printf("array is not sorted");
     }
     return 0;
 }
