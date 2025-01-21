@@ -551,3 +551,99 @@
 
 //     return 0;
 // }
+
+
+
+
+
+//LENGTH OF STRING
+
+// int getLength(char name[]){
+//     int count = 0;
+//     for(int i = 0; name[i] != '\0'; i++){
+//         count++;
+//     }
+//     return count;
+// }
+
+// int main(){
+//     char name[20];
+//     scanf("%s", &name);
+//     int result = getLength(name);
+//     printf("Length of string is: %d", result);
+//     return 0;
+// }
+
+
+
+
+
+//REVERSE NAME
+
+// void reverse(char name[], int len){
+//     int start = 0;
+//     int end = len-1;
+//     while(start < end){
+//         char temp = name[start];
+//         name[start] = name[end];
+//         name[end] = temp;
+//         start++;
+//         end--;
+//     }
+// }
+
+// int getLength(char name[]){
+//     int count = 0;
+//     for(int i = 0; name[i] != '\0'; i++){
+//         count++;
+//     }
+//     return count;
+// }
+
+// int main(){
+//     char name[20];
+//     scanf("%s", &name);
+//     int len = getLength(name);
+//     reverse(name, len);
+//     printf("%s", name);
+//     return 0;
+// }
+
+
+
+
+//is_Pallindrome
+
+int getLength(char name[]){
+    int count = 0;
+    for(int i = 0; name[i] != '\0'; i++){
+        count++;
+    }
+    return count;
+}
+
+bool pallin(char name[], int len){
+    int s = 0;
+    int e = len-1;
+    while(s < e){
+        if(name[s] != name[e]){
+            return 0;
+        }
+        s++;
+        e--;
+    }
+    return 1;
+}
+
+int main(){
+    char name[20];
+    scanf("%s", &name);
+    int len = getLength(name);
+    if(pallin(name, len)){
+        printf("is a pallindrome");
+    }
+    else{
+        printf("not a pallindrome");
+    }
+    return 0;
+}
