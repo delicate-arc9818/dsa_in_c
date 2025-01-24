@@ -647,3 +647,23 @@
 //     }
 //     return 0;
 // }
+
+
+
+
+//file handling
+
+// int main(){
+//     FILE* fptr;
+//     fptr = fopen("text.txt", "w");
+//     fputs("C is a fun programming language\n", fptr);
+//     fputs("And, I love using C language", fptr);
+//     fclose(fptr);
+
+//     fptr = fopen("text.txt", "r");
+//     char content[1000];
+//     while(fgets(content, 1000, fptr)){
+//         printf("%s", content);
+//     }
+//     return 0;
+// }
