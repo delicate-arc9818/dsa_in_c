@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 
 // //LINEAR SEARCH
@@ -667,3 +668,124 @@
 //     }
 //     return 0;
 // }
+
+
+
+
+//FILE HANDLING
+
+
+void addStudent(int roll_num, char name[], float marks){
+    FILE *fp = fopen("students.txt", "a");
+
+    if (fp == NULL){
+        printf("Error opening file!\n");
+        return;
+    }
+
+    fprintf(fp, "\n%d %s %.2f", roll_num, name, marks);
+
+    fclose(fp);
+
+    printf("Student added successfully\n");
+}
+
+void displayRecord(){
+    FILE *fp = fopen("students.txt", "r");
+
+    if(fp == NULL){
+        printf("Error opening file!\n");
+        return;
+    }
+
+    char ch;
+
+    while((ch = fgetc(fp)) != EOF){
+        printf("%c", ch);
+    }
+
+    fclose(fp);
+
+}
+
+void studentSearch(int roll_num){
+    FILE *fp = fopen("students.txt", "r");
+
+    if(fp == NULL){
+        printf("Error opening file\n");
+        return;
+    }
+
+    int roll;
+    char name[100];
+    float marks;
+
+    while(fscanf(fp, "%d %[^\n] %f", &roll, name, &marks) != EOF){
+
+        if(roll == roll_num){
+            printf("Record found: Roll Number: %d Name: %s Marks: %.2f", roll, name, marks);
+            fclose(fp);
+            return;
+        }
+
+    }
+    printf("NO matching record");
+    fclose(fp);
+}
+
+
+int main(){
+    int command;
+    while(1){
+        printf("\nEnter command: ");
+        scanf("%d", &command);
+        if(command == 1){
+            //add a new student
+            int roll_num;
+            char name[100];
+            float marks;
+
+            printf("Enter roll number: ");
+            scanf("%d", &roll_num);
+            getchar();
+
+            printf("Enter name: ");
+            fgets(name, sizeof(name), stdin);
+            name[strcspn(name, "\n")] = '\0';
+
+            printf("Enter marks: ");
+            scanf("%f", &marks);
+
+            addStudent(roll_num, name, marks);
+        }
+        else if(command == 2){
+            //display all student record
+            displayRecord();
+        }
+        else if(command == 3){
+            //search for student by roll number
+            int roll_num;
+
+            printf("enter roll num to search: ");
+            scanf("%d", &roll_num);
+
+            studentSearch(roll_num);
+        }
+        else if(command == 4){
+            //updat ename or marks by roll number
+        }
+        else if(command == 5){
+            //delete record
+        }
+        else if(command == 6){
+            //mergesort student records by name
+        }
+        else if(command == 7){
+            //mergesort student records by marks
+        }
+        else{
+            break;
+        }
+    }
+    return 0;
+}
