@@ -718,9 +718,10 @@ void studentSearch(int roll_num){
 
     int roll;
     char name[100];
+    char surname[100];
     float marks;
 
-    while(fscanf(fp, "%d %[^\n] %f", &roll, name, &marks) != EOF){
+    while(fscanf(fp, "%d %s %s %f", &roll, name, surname, &marks) != EOF){
 
         if(roll == roll_num){
             printf("Record found: Roll Number: %d Name: %s Marks: %.2f", roll, name, marks);
@@ -772,7 +773,10 @@ int main(){
             studentSearch(roll_num);
         }
         else if(command == 4){
-            //updat ename or marks by roll number
+            //update name or marks by roll number
+            int roll_num;
+            printf("enter roll number to update: ");
+            scanf("%d", &roll_num);
         }
         else if(command == 5){
             //delete record
