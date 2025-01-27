@@ -675,121 +675,174 @@
 //FILE HANDLING
 
 
-void addStudent(int roll_num, char name[], float marks){
-    FILE *fp = fopen("students.txt", "a");
+// void addStudent(int roll_num, char name[], float marks){
+//     FILE *fp = fopen("students.txt", "a");
 
-    if (fp == NULL){
-        printf("Error opening file!\n");
-        return;
-    }
+//     if (fp == NULL){
+//         printf("Error opening file!\n");
+//         return;
+//     }
 
-    fprintf(fp, "\n%d %s %.2f", roll_num, name, marks);
+//     fprintf(fp, "\n%d %s %.2f", roll_num, name, marks);
 
-    fclose(fp);
+//     fclose(fp);
 
-    printf("Student added successfully\n");
-}
+//     printf("Student added successfully\n");
+// }
 
-void displayRecord(){
-    FILE *fp = fopen("students.txt", "r");
+// void displayRecord(){
+//     FILE *fp = fopen("students.txt", "r");
 
-    if(fp == NULL){
-        printf("Error opening file!\n");
-        return;
-    }
+//     if(fp == NULL){
+//         printf("Error opening file!\n");
+//         return;
+//     }
 
-    char ch;
+//     char ch;
 
-    while((ch = fgetc(fp)) != EOF){
-        printf("%c", ch);
-    }
+//     while((ch = fgetc(fp)) != EOF){
+//         printf("%c", ch);
+//     }
 
-    fclose(fp);
+//     fclose(fp);
 
-}
+// }
 
-void studentSearch(int roll_num){
-    FILE *fp = fopen("students.txt", "r");
+// void studentSearch(int roll_num){
+//     FILE *fp = fopen("students.txt", "r");
 
-    if(fp == NULL){
-        printf("Error opening file\n");
-        return;
-    }
+//     if(fp == NULL){
+//         printf("Error opening file\n");
+//         return;
+//     }
 
-    int roll;
-    char name[100];
-    char surname[100];
-    float marks;
+//     int roll;
+//     char name[100];
+//     char surname[100];
+//     float marks;
 
-    while(fscanf(fp, "%d %s %s %f", &roll, name, surname, &marks) != EOF){
+//     while(fscanf(fp, "%d %s %s %f", &roll, name, surname, &marks) != EOF){
 
-        if(roll == roll_num){
-            printf("Record found: Roll Number: %d Name: %s Marks: %.2f", roll, name, marks);
-            fclose(fp);
-            return;
+//         if(roll == roll_num){
+//             printf("Record found: Roll Number: %d Name: %s Marks: %.2f", roll, name, marks);
+//             fclose(fp);
+//             return;
+//         }
+
+//     }
+//     printf("NO matching record");
+//     fclose(fp);
+// }
+
+
+// int main(){
+//     int command;
+//     while(1){
+//         printf("\nEnter command: ");
+//         scanf("%d", &command);
+//         if(command == 1){
+//             //add a new student
+//             int roll_num;
+//             char name[100];
+//             float marks;
+
+//             printf("Enter roll number: ");
+//             scanf("%d", &roll_num);
+//             getchar();
+
+//             printf("Enter name: ");
+//             fgets(name, sizeof(name), stdin);
+//             name[strcspn(name, "\n")] = '\0';
+
+//             printf("Enter marks: ");
+//             scanf("%f", &marks);
+
+//             addStudent(roll_num, name, marks);
+//         }
+//         else if(command == 2){
+//             //display all student record
+//             displayRecord();
+//         }
+//         else if(command == 3){
+//             //search for student by roll number
+//             int roll_num;
+
+//             printf("enter roll num to search: ");
+//             scanf("%d", &roll_num);
+
+//             studentSearch(roll_num);
+//         }
+//         else if(command == 4){
+//             //update name or marks by roll number
+//             int roll_num;
+//             printf("enter roll number to update: ");
+//             scanf("%d", &roll_num);
+//         }
+//         else if(command == 5){
+//             //delete record
+//         }
+//         else if(command == 6){
+//             //mergesort student records by name
+//         }
+//         else if(command == 7){
+//             //mergesort student records by marks
+//         }
+//         else{
+//             break;
+//         }
+//     }
+//     return 0;
+// }
+
+
+
+
+
+//QUICK SORT
+
+int quick(int arr[], int lwb, int upb){
+    int i, j, pivot, temp;
+    i = lwb;
+    j = upb;
+    pivot = arr[lwb];
+    while(i <= j){
+        while(arr[i] <= pivot){
+            i++;
         }
-
+        while(arr[j] >= pivot){
+            j--;
+        }
+        if(i < j){
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        arr[lwb] = arr[j];
+        arr[j] = pivot;
+        return j;
     }
-    printf("NO matching record");
-    fclose(fp);
 }
 
+void sort(int arr[], int lwb, int upb){
+    int z;
+    if(lwb < upb){
+        z = quick(arr, lwb, upb);
+        sort(arr, lwb, z-1);
+        sort(arr, z+1, upb);
+    }
+}
 
 int main(){
-    int command;
-    while(1){
-        printf("\nEnter command: ");
-        scanf("%d", &command);
-        if(command == 1){
-            //add a new student
-            int roll_num;
-            char name[100];
-            float marks;
-
-            printf("Enter roll number: ");
-            scanf("%d", &roll_num);
-            getchar();
-
-            printf("Enter name: ");
-            fgets(name, sizeof(name), stdin);
-            name[strcspn(name, "\n")] = '\0';
-
-            printf("Enter marks: ");
-            scanf("%f", &marks);
-
-            addStudent(roll_num, name, marks);
-        }
-        else if(command == 2){
-            //display all student record
-            displayRecord();
-        }
-        else if(command == 3){
-            //search for student by roll number
-            int roll_num;
-
-            printf("enter roll num to search: ");
-            scanf("%d", &roll_num);
-
-            studentSearch(roll_num);
-        }
-        else if(command == 4){
-            //update name or marks by roll number
-            int roll_num;
-            printf("enter roll number to update: ");
-            scanf("%d", &roll_num);
-        }
-        else if(command == 5){
-            //delete record
-        }
-        else if(command == 6){
-            //mergesort student records by name
-        }
-        else if(command == 7){
-            //mergesort student records by marks
-        }
-        else{
-            break;
-        }
+    int size;
+    printf("enter size of array: ");
+    scanf("%d", &size);
+    int arr[size];
+    for(int i = 0; i < size; i++){
+        scanf("%d", &arr[i]);
+    }
+    sort(arr, 0, size - 1);
+    for(int i = 0; i < size; i++){
+        printf("%d ", arr[i]);
     }
     return 0;
 }
