@@ -800,49 +800,49 @@
 
 //QUICK SORT
 
-int quick(int arr[], int lwb, int upb){
-    int i, j, pivot, temp;
-    i = lwb;
-    j = upb;
-    pivot = arr[lwb];
-    while(i <= j){
-        while(arr[i] <= pivot){
-            i++;
-        }
-        while(arr[j] >= pivot){
-            j--;
-        }
-        if(i < j){
-            temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-        }
-        arr[lwb] = arr[j];
-        arr[j] = pivot;
-        return j;
-    }
-}
+// int quick(int arr[], int lwb, int upb){
+//     int i, j, pivot, temp;
+//     i = lwb;
+//     j = upb;
+//     pivot = arr[lwb];
+//     while(i <= j){
+//         while(arr[i] <= pivot){
+//             i++;
+//         }
+//         while(arr[j] >= pivot){
+//             j--;
+//         }
+//         if(i < j){
+//             temp = arr[i];
+//             arr[i] = arr[j];
+//             arr[j] = temp;
+//         }
+//         arr[lwb] = arr[j];
+//         arr[j] = pivot;
+//         return j;
+//     }
+// }
 
-void sort(int arr[], int lwb, int upb){
-    int z;
-    if(lwb < upb){
-        z = quick(arr, lwb, upb);
-        sort(arr, lwb, z-1);
-        sort(arr, z+1, upb);
-    }
-}
+// void sort(int arr[], int lwb, int upb){
+//     int z;
+//     if(lwb < upb){
+//         z = quick(arr, lwb, upb);
+//         sort(arr, lwb, z-1);
+//         sort(arr, z+1, upb);
+//     }
+// }
 
-int main(){
-    int size;
-    printf("enter size of array: ");
-    scanf("%d", &size);
-    int arr[size];
-    for(int i = 0; i < size; i++){
-        scanf("%d", &arr[i]);
-    }
-    sort(arr, 0, size - 1);
-    for(int i = 0; i < size; i++){
-        printf("%d ", arr[i]);
-    }
-    return 0;
-}
+// int main(){
+//     int size;
+//     printf("enter size of array: ");
+//     scanf("%d", &size);
+//     int arr[size];
+//     for(int i = 0; i < size; i++){
+//         scanf("%d", &arr[i]);
+//     }
+//     sort(arr, 0, size - 1);
+//     for(int i = 0; i < size; i++){
+//         printf("%d ", arr[i]);
+//     }
+//     return 0;
+// }
