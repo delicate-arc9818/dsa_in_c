@@ -1,29 +1,60 @@
-#include <stdio.h>
+ #include <stdio.h>
 
-void binary_search(int arr[], int size, int target){
-    int start = 0;
-    int end = size - 1;
-    int left = end;
-    int right = start;
-    while(start <= end){
-        int mid = start + (end - start) / 2;
-        if(arr[mid] == target){
-            left = right = mid;
+// int last_occurance(int arr[], int size, int target){
+//     int left = 0;
+//     int right = size - 1;
+//     int idx = -1;
+//     while(left <= right){
+//         int mid = left + (right - left) / 2;
+//         if(arr[mid] == target){
+//             idx = mid;
+//             left = mid + 1;
+//         }
+//         else if(arr[mid] > target){
+//             right = mid - 1;
+//         }
+//         else{
+//             left = mid + 1;
+//         }
+//     }
+//     return idx;
+// }
 
-        }
-        if(arr[mid] > target){
-            end = mid - 1;
-        }
-        else{
-            start = mid + 1;
-        }
-    }
-}
+// int first_occurance(int arr[], int size, int target){
+//     int left = 0;
+//     int right = size - 1;
+//     int idx = -1;
+//     while(left <= right){
+//         int mid = left + (right - left) / 2;
+//         if(arr[mid] == target){
+//             idx = mid;
+//             right = mid - 1;
+//         }
+//         else if(arr[mid] > target){
+//             right = mid - 1;
+//         }
+//         else{
+//             left = mid + 1;
+//         }
+//     }
+//     return idx;
+// }
+
+// int main(){
+//     int arr[7] = {2,4,4,4,6,8,9};
+//     int size = 7;
+//     int target = 6;
+//     int a1 = first_occurance(arr, size, target);
+//     int a2 = last_occurance(arr, size, target);
+//     printf("{%d %d}\n", a1, a2);
+//     return 0;
+// }
+
+
+
 
 int main(){
-    int arr[7] = {2,4,4,4,6,8,9};
     int size = 7;
-    int target = 4;
-    binary_search(arr, size, target);
+    elimination(size);
     return 0;
 }
