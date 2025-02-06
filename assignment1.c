@@ -57,42 +57,27 @@
 //     return 0;
 // }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-// Recursive helper function with corrected survivor count.
-int findGuardianRec(int n, int left) {
-    if (n == 1)
-        return 1;  // Base case: only one citizen remains.
-    
-    if (left) {
-        // Left-to-right elimination:
-        // Survivors are in positions 1, 3, 5, … (i.e. ceil(n/2) survivors)
-        return 2 * findGuardianRec((n + 1) / 2, 0) - 1;
-    } else {
-        // Right-to-left elimination:
-        if (n % 2 == 1)
-            // For odd n, survivors are in positions 1, 3, 5, … (ceil(n/2))
-            return 2 * findGuardianRec((n + 1) / 2, 1) - 1;
-        else
-            // For even n, survivors are in positions 2, 4, 6, … (n/2 survivors)
-            return 2 * findGuardianRec(n / 2, 1);
-    }
-}
+// long long int findGuardianRec(long long int n){
+//     if(n == 1){
+//         return 1;
+//     }
+//     return 2*((n/2) + 1 - findGuardianRec(n/2));
+// }
 
-int main() {
-    int num;
-    printf("Enter number: ");
-    scanf("%d", &num);
+// int main() {
+//     long long int num;
+//     printf("Enter number: ");
+//     scanf("%lld", &num);
 
-    if (num < 1) {
-        printf("Invalid number of citizens\n");
-        return 1;
-    }
+//     if (num < 1) {
+//         printf("Invalid number of citizens\n");
+//         return 1;
+//     }
+//     int guardian = findGuardianRec(num);
+//     printf("Last remaining citizen: %d\n", guardian);
 
-    // Start with left-to-right elimination (left = 1).
-    int guardian = findGuardianRec(num, 1);
-    printf("Last remaining citizen: %d\n", guardian);
-
-    return 0;
-}
+//     return 0;
+// }
 

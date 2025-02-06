@@ -846,3 +846,40 @@
 //     }
 //     return 0;
 // }
+
+
+
+
+//TWO SUM USING POINTERS
+
+// void twosum(int arr[], int size, int target){
+//     int left = 0;
+//     int right = size - 1;
+//     while(left < right){
+//         int sum = arr[left] + arr[right];
+//         if(sum == target){
+//             return;
+//         }
+//         else if(sum < target){
+//             left++;
+//         }
+//         else{
+//             right--;
+//         }
+//     }
+//     printf("no number found");
+// }
+
+// int main(){
+//     int size, target;
+//     printf("enter size of array: ");
+//     scanf("%d", &size);
+//     int arr[size];
+//     for(int i = 0; i < size; i++){
+//         scanf("%d", arr[i]);
+//     }
+//     printf("Enter target sum: ");
+//     scanf("%d", &target);
+//     twosum(arr, size, target);
+//     return 0;
+// }
