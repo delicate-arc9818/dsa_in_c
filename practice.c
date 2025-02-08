@@ -883,3 +883,36 @@
 //     twosum(arr, size, target);
 //     return 0;
 // }
+
+
+
+
+// void multiplymatrix(int n, int (*a)[n], int (*b)[n], int (*result)[n]){
+//     for(int i = 0; i < n; i++){
+//         for(int j = 0; j < n; j++){
+//             *(*(result + i) + j) = 0;
+//             for(int k = 0; k < n; k++){
+//                 *(*(result + i) + j) += *(*(a + i) + k) * *(*(b + k) + j);
+//             }
+//         }
+//     }
+// }
+
+// void printmatrix(int n, int (*result)[n]){
+//     for(int i = 0; i < n; i++){
+//         for(int j = 0; j < n; j++){
+//             printf("%d ", *(*(result + i) + j));
+//         }
+//         printf("\n");
+//     }
+// }
+
+// int main(){
+//     int n = 3;
+//     int a[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
+//     int b[3][3] = {{9,8,7},{6,5,4},{3,2,1}};
+//     int result[n][n];
+//     multiplymatrix(n, a, b, result);
+//     printmatrix(n, result);
+//     return 0;
+// }
