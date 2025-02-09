@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 //int main(){
     /*
     int arr[10];
@@ -142,22 +143,47 @@ int main(){
 }
 */
 
-
-//REFERENCE VARIABLE
-
+/*
 int main(){
+    int rows, cols;
+    printf("enter num of rows and cols: ");
+    scanf("%d %d", &rows, &cols);
+    int** arr = (int**)malloc(rows * sizeof(int*)); //making an array of pointers
+    if(arr == NULL){
+        printf("Memory allocation failed\n");
+        return 1;
+    }
+    for(int i = 0; i < rows; i++){
+        arr[i] = (int*)malloc(cols * sizeof(int)); // making every pointer point to an array of nums
+        if(arr[i] == NULL){
+            printf("Memory allocation failed\n");
+            return 1;
+        }
+    }
 
-    int i = 5;
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < cols; j++){
+            scanf("%d", &arr[i][j]); //insertng elements
+        }
+    }
 
-    //create reference variable
+    for(int i = 0; i < rows; i++){
 
-    int &(j) = i;
+        for(int j = 0; j < cols; j++){
 
-    printf("%d\n", i);
-    i++;
-    printf("%d\n", i);
-    j++;
-    printf("%d\n", i);
+            printf("%d ", *(*(arr + i) + j));
+        }
+        printf("\n");
+
+    }
+
+    for(int i = 0; i < rows; i++){
+        free(arr[i]);
+    }
+
+    free(arr);
 
     return 0;
 }
+*/
+
