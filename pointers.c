@@ -90,8 +90,8 @@ int main(){
     int *ptr = &value;
     printf("before updating\n");
     print(ptr);
-    printf("updated inside function\n");
-    update(ptr);
+    printf("updated inside function\n");                                            p = p + 1 does not work globally
+    update(ptr);                                                                    *p = *p + 1 works globally
     printf("after updating and coming back to main\n");
     print(ptr);
     printf("value of ptr after updating inside func is: %d\n", *ptr);
@@ -121,3 +121,43 @@ int main(){
 }
 */
 
+/*
+int main(){
+
+    int value = 5;
+    int* ptr = &value;
+    int** ptr2 = &ptr;
+
+    printf("value is: %d\n", value);
+    printf("value is: %d\n", *ptr);
+    printf("value is: %d\n", **ptr2);
+    
+    printf("address of value is: %p\n", &value);
+    printf("address of value is: %p\n", ptr);
+    printf("address of value is: %p\n", *ptr2);
+
+    printf("address of 1st pointer is: %p\n", &ptr);
+    printf("address of 1st pointer is: %p\n", ptr2);
+    return 0;
+}
+*/
+
+
+//REFERENCE VARIABLE
+
+int main(){
+
+    int i = 5;
+
+    //create reference variable
+
+    int &(j) = i;
+
+    printf("%d\n", i);
+    i++;
+    printf("%d\n", i);
+    j++;
+    printf("%d\n", i);
+
+    return 0;
+}
