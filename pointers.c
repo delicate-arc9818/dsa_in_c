@@ -187,3 +187,75 @@ int main(){
 }
 */
 
+/*
+void transpose(int rows, int cols, int (*arr)[cols]){
+    for(int i = 0; i < rows; i++){
+        for(int j = i + 1; j < cols; j++){
+            int *a = (*(arr + i) + j);
+            int *b = (*(arr + j) + i);
+
+            int temp = *a;
+            *a = *b;
+            *b = temp;
+        }
+    }
+}
+
+void print(int rows, int cols, int (*arr)[cols]){
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < cols; j++){
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main(){
+
+    int rows, cols;
+
+    printf("Enter num of rows: ");
+    scanf("%d", &rows);
+
+    printf("Enter num of cols: ");
+    scanf("%d", &cols);
+
+    int arr[rows][cols];
+
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < cols; j++){
+            scanf("%d", &arr[i][j]);
+        }
+    }
+
+    printf("Original Matrix\n");
+    print(rows, cols, arr);
+
+    int sum; 
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < cols; j++){
+            sum+=arr[i][j];
+        }
+    }
+    if(rows == cols){
+        transpose(rows, cols, arr);
+        printf("transposed matrix\n");
+        print(rows, cols, arr);
+    }
+    else{
+        int result[cols][rows];
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                *(*(result + i) + j) = *(*(arr  + j) + i);
+            }
+        }
+        transpose(cols, rows, result);
+        printf("Transposed matrix\n");
+        print(cols, rows, result);
+    }
+    printf("sum of elements of matrix is: %d\n", sum);
+
+    return 0;
+}
+*/
+
