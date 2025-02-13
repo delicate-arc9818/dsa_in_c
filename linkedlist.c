@@ -1,45 +1,60 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-//creating a node
-struct node{
-    int data;           //node consist of 2 parts -> a value & a pointer to next node
-    struct node* next;  //a pointer named next which points to some node which we haven't defined yet
+struct Node{
+    int data;
+    struct Node* next;
 };
 
-//function to create a node
-struct node* createnode(int data){  //createnode is a function of type struct node*
-    struct node* newnode = (struct node*)malloc(sizeof(struct node));
-    if(!newnode){
-        printf("Memory allocation failed\n");
-        return NULL;
+void linkedlisttraversal(struct Node* ptr){
+    while(ptr != NULL){
+        printf("Element: %d\n", ptr->data);  //equivalent of (*ptr).data
+        ptr = ptr->next;
     }
-    newnode->data = data;
-    newnode->next = NULL;
-    return newnode;
-}
-
-//insert at beginning
-void inseratbeginning(struct node** head, int data){
-    struct node* newnode = createnode(data);
-    if(!newnode){
-        return;
-    }
-    newnode->next = head;
-    *head = newnode;
-}
-
-void insertionatend(struct node** head, int data){
-    struct node* newnode = createnode(data);
-    if(!newnode){
-        return;
-    }
-    if(*head == NULL){
-        *head = newnode;
-        return;
-    }
-    
 }
 
 int main(){
+    struct Node *head, *second, *third, *fourth;
+
+    head = (struct Node*)malloc(sizeof(struct Node));
+    second = (struct Node*)malloc(sizeof(struct Node));
+    third = (struct Node*)malloc(sizeof(struct Node));
+    fourth = (struct Node*)malloc(sizeof(struct Node));
+
+    /*
+    head->data = 7;
+    head->next = second;
+
+    second->data = 11;
+    second->next = third;
+
+    third->data = 41;
+    third->next = fourth;
+
+    fourth->data = 66;
+    fourth->next = NULL;
+    */
+
+    head = createNode(7);
+    second = createNode(11);
+    third = createNode(41);
+    fourth = createNode(66);
+
+    head->next = second;
+    second->next = third;
+    third->next = fourth;
+
+
+
+    linkedlisttraversal(head);
+
+
+    //releasing memory
+    struct Node*temp;
+    while(head != NULL){
+        temp = head;
+        head = head->next;
+        free(temp);
+    }
     return 0;
 }
