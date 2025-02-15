@@ -6,92 +6,66 @@ struct Node{
     struct Node* next;
 };
 
-//case-1: insertion at beginning
-struct Node* insertionatfirst(struct Node *head, int data){
-    struct Node* ptr = (struct Node*)malloc(sizeof(struct Node));
-    ptr->data = data;
-    ptr->next = head;
-    return ptr; //ptr becomes the new head
+struct Node* createnode(int data){
+    struct Node* newnode = (struct Node*)malloc(sizeof(struct Node));
+    if(newnode == NULL){
+        printf("memory allocation failed\n");
+        return NULL;
+    }
+    newnode->data = data;
+    newnode->next = NULL;
+    return newnode;
 }
 
-//case-2: insertion in between
-struct Node *insertionatindex(struct Node* head, int data, int index){
-    struct Node *ptr = (struct Node*)malloc(sizeof(struct Node));
-    struct Node *p = head;
-    for(int i = 0; i != index - 1; i++){
-        p = p->next;
+void traverselist(struct Node* head){
+    struct Node* current = head;
+    while(current != NULL){
+        printf("%d ", current->data);
+        current = current->next;
     }
-    ptr->data = data;
-    ptr->next = p->next;
-    p->next = ptr;
-    return head;
+    printf("NULL\n");
+
 }
 
-
-//case-3: insertion at end
-struct Node *insertatend(struct Node* head, int data){
-    struct Node *ptr = (struct Node*)malloc(sizeof(struct Node));
-    ptr->data = data;
-    struct Node *p = head;
-    for(int i = 0; i != NULL; i++){
-        p = p->next;
+struct Node* searchkey(struct Node* head, int key){
+    struct Node* current = head;
+    while(current->data != NULL){
+        if(current->data == key){
+            return current;
+        }
+        current = current->next;
     }
-    p->next = ptr;
-    ptr->next = NULL;
-    return head;
+    return NULL;
 }
 
 
+void insertionatstart(struct Node** head, int data){
+    struct Node* newnode = createnode(data);
+    newnode->next = head;
+    head = newnode;
+}
 
-void linkedlisttraversal(struct Node* ptr){
-    while(ptr != NULL){
-        printf("Element: %d\n", ptr->data);  //equivalent of (*ptr).data
-        ptr = ptr->next;
+
+void insertafter(struct Node* previous, int data){
+    struct Node* newnode = createnode(data);
+    if(previous == NULL){
+        printf("previous node cant be null\n");
+        return;
     }
+    newnode->next = previous->next;
+    previous->next = newnode;
 }
 
 int main(){
-    struct Node *head, *second, *third, *fourth;
-
-    head = (struct Node*)malloc(sizeof(struct Node));
-    second = (struct Node*)malloc(sizeof(struct Node));
-    third = (struct Node*)malloc(sizeof(struct Node));
-    fourth = (struct Node*)malloc(sizeof(struct Node));
-
-    /*
-    head->data = 7;
-    head->next = second;
-
-    second->data = 11;
-    second->next = third;
-
-    third->data = 41;
-    third->next = fourth;
-
-    fourth->data = 66;
-    fourth->next = NULL;
-    */
-
-    head = createNode(7);
-    second = createNode(11);
-    third = createNode(41);
-    fourth = createNode(66);
+    struct Node* head = createnode(10);
+    struct Node* second = createnode(20);
+    struct Node* third = createnode(30);
 
     head->next = second;
     second->next = third;
-    third->next = fourth;
 
 
-
-    linkedlisttraversal(head);
-
-
-    //releasing memory
-    struct Node*temp;
-    while(head != NULL){
-        temp = head;
-        head = head->next;
-        free(temp);
-    }
+    printf("Linked list\n");
+    traverselist(head);
     return 0;
 }

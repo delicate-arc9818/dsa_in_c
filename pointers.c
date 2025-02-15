@@ -5,8 +5,10 @@
     int arr[10];
     printf("address of first memory block is: %p\n", arr);
     printf("address of first memory block is: %p\n", &arr[0]);
+
     printf("value at first memory block is: %d\n", arr[0]);
     printf("value at first memory block is: %d\n", *arr);
+    
     printf("value at memory location + 1 is: %d\n", *arr + 1);
     printf("value at memory location + 1 is: %d\n", *(arr) + 1);
     printf("value at second memory block is: %d\n", *(arr + 1));
