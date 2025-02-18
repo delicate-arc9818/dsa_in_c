@@ -916,3 +916,81 @@
 //     printmatrix(n, result);
 //     return 0;
 // }
+
+// int binarysearch(int size, int arr[], int target){
+//     int start = 0;
+//     int end = arr[size] - 1;
+//     while(start <= end){
+//         int mid = start + (end - start)/2;
+//         if(target == arr[mid]){
+//             return mid;
+//         }
+//         else if(target < arr[mid]){
+//             end = mid - 1;
+//         }
+//         else{
+//             start = mid + 1;
+//         }
+//     }
+// }
+
+// int binarysearch(int start, int end, int target){
+//     int mid = start + (end - start)/2;
+//     if(start > end){
+//         return -1;
+//     }
+//     else if(target < mid){
+//         return binarysearch(start, mid - 1, target);
+//     }
+//     else if(target == mid){
+//         return mid;
+//     }
+//     else{
+//         return binarysearch(mid + 1, end, target);
+//     }
+
+// }
+
+// int main(){
+
+// }
+
+// void bubblesort(int arr[], int size){
+//     for(int i = 0; i < size - 1; i++){
+//         for(int j = 0; j < size - 1; j++){
+//             if(arr[j] > arr[j+1]){                   inner loop runs for n-1 time, outer loop runs for n-1 times
+//                 int temp = arr[j];                   time complexity = O(n^2)
+//                 arr[j] = arr[j+1];
+//                 arr[j+1] = temp;
+//             }
+//         }
+//     }
+// }
+
+// void insertionsort(int arr[], int size){
+//     for(int i = 1; i < size; i++){
+//         int num = arr[i];
+//         int j = i - 1;
+//         for(j; j >= 0; j--){
+//             if(arr[j] > num){
+//                 arr[j+1] = arr[j];
+//             }
+//         }
+//         arr[j+1] = num;
+//     }
+// }
+
+// void selectsort(int arr[], int n){
+//     for(int i = 0; i < n-1; i++){
+//         int small = arr[i];
+//         int b = i;
+//         for(int j = i + 1; j < n; j++){
+//             if(small > arr[j]){
+//                 arr[j] = small;
+//                 b = j;
+//             }
+//         }
+//         arr[b] = arr[i];
+//         arr[i] = small;
+//     }
+// }
