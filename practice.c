@@ -994,3 +994,94 @@
 //         arr[i] = small;
 //     }
 // }
+
+// void divide(int arr[], int start, int end){
+//     int mid;
+//     if(start < end){
+//         mid = start + (end - start)/2;
+//         divide(arr, start, mid);
+//         divide(arr, mid+1, end);
+//         conquermerge(arr, start, mid, end);
+//     }
+// }
+
+// void conquermerge(int arr[], int start, int mid, int end){
+//     int x = start;
+//     int y = mid + 1;
+//     int z = 0;
+//     int temp[100];
+
+//     while((x <= mid) && (y <= end)){
+//         if(arr[x] <= arr[y]){
+//             temp[z] = arr[x];
+//             x++;
+//             z++;
+//         }
+//         else{
+//             temp[z] = arr[y];
+//             y++;
+//             z++;
+//         }
+//     }
+//     while(x <= mid){
+//         temp[z++] = arr[x++];
+//     }
+
+//     while(y <= end){
+//         temp[z++] = arr[y++];
+//     }
+
+//     z = 0;
+//     for(x = start; x <= end; x++){
+//         arr[x] = temp[z];
+//         z++;
+//     }
+// }
+
+// int max = 8;
+// int stack[8];
+// int top = -1;
+
+// int isempty(){
+//     if(top == -1){
+//         return 1;
+//     }
+//     else{
+//         return 0;
+//     }
+// }
+
+// int isfull(){
+//     if(top == max){
+//         return 1;
+//     }
+//     else{
+//         return 0;
+//     }
+// }
+
+// int peek(){
+//     return stack[top];
+// }
+
+// int pop(){
+//     if(!isempty()){
+//         int data = stack[top];
+//         top-=1;
+//         return data;
+//     }
+//     else{
+//         printf("stack empty\n");
+//         return 0;
+//     }
+// }
+
+// void push(int data){
+//     if(!isfull()){
+//         top = top + 1;
+//         stack[top] = data;
+//     }
+//     else{
+//         printf("stack overflow\n");
+//     }
+// }
