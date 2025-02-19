@@ -46,15 +46,83 @@ void insertionatstart(struct Node** head, int data){
 }
 
 
-void insertafter(struct Node* previous, int data){
-    struct Node* newnode = createnode(data);
-    if(previous == NULL){
-        printf("previous node cant be null\n");
+void insertafter(struct Node* head, int data, int index){
+    if(head == NULL){
+        printf("list is empty\n");
         return;
     }
-    newnode->next = previous->next;
-    previous->next = newnode;
+    struct Node* newnode = createnode(data);
+    if(!newnode){
+        printf("memory allocation failed\n");
+        return;
+    }
+    struct Node* temp = head;
+    for(int i = 0; i < index; i++){
+        if(temp->next == NULL){
+            free(temp);
+            return;
+        }
+        temp = temp->next;
+    }
+    newnode->next = temp->next;
+    temp->next = newnode;
 }
+
+void insertatend(struct Node** head, int data){
+    struct Node* newnode = createnode(data);
+    if (*head == NULL) { // If list is empty, new node becomes head
+        *head = newnode;
+        return;
+    }
+    struct Node* temp = head;
+
+    while(temp->next != NULL){
+        temp = temp->next;
+    }
+    temp->next = newnode;
+}
+
+
+void deletestart(struct Node** head){
+    if(head == NULL){
+        printf("empty list\n");
+        return;
+    }
+    *head = (*head)->next;
+}
+
+void deleteinbetween(struct Node* head, int index){
+    if(head == NULL){
+        printf("empty list\n");
+        return;
+    }
+    struct Node* temp = head;
+    for(int i = 0; i < index; ++i){
+        if(temp->next == NULL){
+            free(temp);
+            return;
+        }
+        temp = temp->next;
+    }
+    temp->next = temp->next->next;
+
+}
+
+void reverse(struct Node** head){
+    struct Node* previous = NULL;
+    struct Node* current = *head;
+    struct Node* forward = NULL;
+
+    while(current != NULL){
+        forward = current->next;
+        previous = current->next;
+        previous = current;
+        current = forward;
+    }
+    *head = previous;
+}
+
+
 
 int main(){
     struct Node* head = createnode(10);
