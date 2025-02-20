@@ -124,6 +124,52 @@ void reverse(struct Node** head){
 
 
 
+struct Node* merge(struct Node* head, struct Node* head1){
+    if(head == NULL){
+        return head1;
+    }
+    if(head1 == NULL){
+        return head;
+    }
+
+    struct Node* sorting = NULL;
+    struct Node* newhead = NULL;
+
+    if(head->data >= head1->data){
+        newhead = head1;
+        head1 = newhead->next;
+    }
+    else{
+        newhead = head;
+        head = newhead->next;
+    }
+
+    sorting = newhead;
+
+    while(head && head1){
+        if(head->data >= head1->data){
+            sorting->next = head1;
+            head1 = head1->next;
+        }
+        else{
+            sorting->next = head;
+            head = head->next;
+        }
+        sorting = sorting->next;
+    }
+
+    if(head){
+        sorting->next = head;
+    }
+    if(head1){
+        sorting->next = head1;
+    }
+
+    return newhead;
+}
+
+
+
 int main(){
     struct Node* head = createnode(10);
     struct Node* second = createnode(20);

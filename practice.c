@@ -1085,3 +1085,129 @@
 //         printf("stack overflow\n");
 //     }
 // }
+
+
+
+
+
+
+
+
+
+
+
+void insertionsort(int arr[], int size){
+    for(int i = 1; i < size; i++){
+        int j = i-1;
+        int temp = arr[i];
+        for(;j >= 0; j--){
+            if(arr[j] > arr[i]){
+                arr[j+1] = arr[j];
+            }
+        }
+        arr[j] = temp;
+    }
+}
+void merge(int arr[], int start, int mid, int end);
+
+void divide(int arr[], int start, int end){
+    if(start < end){
+        int mid = start + (end - start)/2;
+        divide(arr, start, mid);
+        divide(arr, mid + 1, end);
+        merge(arr, start, mid, end);
+    }
+
+}
+
+void merge(int arr[], int start, int mid, int end){
+    int i = start;
+    int j = mid + 1;
+    int temp[100];
+    int z = 0;
+
+
+    while((i <= mid) && (j <= end)){
+        if(arr[i] <= arr[j]){
+            temp[z] = arr[i];
+            i++;
+            z++;
+        }
+        else{
+            temp[z] = arr[j];
+            j++;
+            z++;
+        }
+    }
+
+    while(i <= mid){
+        temp[z++] = arr[i++];
+    }
+
+    while(j <= end){
+        temp[z++] = arr[j++];
+    }
+    for(int k = start; k <= end; k++){
+        arr[k] = temp[k - start];
+        z++;
+    }
+
+}
+
+// int main(){
+
+//     int arr[5] = {1, 43, 22, 1, 3};
+//     divide(arr, 0, 4);
+
+//     for(int i = 0; i < 5; i++){
+//         printf("%d ", arr[i]);
+//     }
+//     return 0;
+// }
+
+
+
+void sort(int arr[], int lwb, int upb);
+int quick(int arr[], int lwb, int upb){
+    int i = lwb + 1;
+    int j = upb;
+    int pivot = arr[lwb];
+
+    while(i <= j){
+        while((i <= upb) &&(arr[i] <= pivot)){
+            i++;
+        }
+        while((j >= lwb) &&(arr[j] > pivot)){
+            j--;
+        }
+        if(i < j){
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    arr[lwb] = arr[j];
+    arr[j] = pivot;
+    return j;
+
+}
+
+void sort(int arr[], int lwb, int upb){
+    int z;
+    if(lwb < upb){
+        z = quick(arr, lwb, upb);
+        sort(arr, lwb, z-1);
+        sort(arr, z+1, upb);
+    }
+}
+
+int main(){
+
+    int arr[5] = {1, 43, 22, 1, 3};
+    sort(arr, 0, 4);
+
+    for(int i = 0; i < 5; i++){
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}

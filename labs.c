@@ -273,3 +273,200 @@
 //     printarr(arr, size);
 //     return 0;
 // }
+
+
+// struct Node{
+//     int data;
+//     struct Node* next;
+// };
+
+// struct Node* createnode(int data){
+//     struct Node* newnode = (struct Node*)malloc(sizeof(struct Node));
+//     if(!newnode){
+//         printf("memory allocation failed\n");
+//         return NULL;
+//     }
+//     newnode->data = data;
+//     newnode->next = NULL;
+//     return newnode;
+// }
+
+
+// void loopdetection(struct Node* head){
+//     struct Node* slow = head;
+//     struct Node* fast = head;
+
+//     while((slow->next != NULL) && (fast->next != NULL)){
+//         slow = slow->next;
+//         fast = fast->next->next;
+
+//         if(slow == fast){
+//             return 1;
+//         }
+//     }
+//     return 0;
+// }
+
+
+// int main(){
+//     struct Node* head = createnode(10);
+//     struct Node* second = createnode(20);
+//     struct Node* third = createnode(30);
+//     struct Node* fourth = createnode(40);
+
+//     head->next = second;
+//     second->next = third;
+//     third->next = fourth;
+
+//     return 0;
+// }
+
+// struct Node{
+//     int data;
+//     struct Node* prev;
+//     struct Node* next;
+// };
+
+// struct Node* createnode(int data){
+//     struct Node* newnode = (struct Node*)malloc(sizeof(struct Node));
+//     if(!newnode){
+//         printf("memory allocation failed\n");
+//         return NULL;
+//     }
+//     newnode->prev = NULL;
+//     newnode->data = data;
+//     newnode->next = NULL;
+//     return newnode;
+// }
+
+// void reverse(struct Node** head){
+//     struct Node* current = *head;
+//     struct Node* temp = NULL;
+//     struct Node* newhead = NULL;
+
+//     while(current != NULL){
+//         temp = current->prev;
+//         current->prev = current->next;
+//         current->next = temp;
+
+//         newhead = current;
+//         current = current->prev;
+//     }
+
+//     *head = temp->prev;
+// }
+
+
+// int main(){
+//     struct Node* head = createnode(10);
+//     struct Node* second = createnode(20);
+//     struct Node* third = createnode(30);
+//     struct Node* fourth = createnode(40);
+
+//     head->next = second;
+//     second->prev = head;
+
+//     second->next = third;
+//     third->prev = second;
+
+//     third->next = fourth;
+//     fourth->prev = third;
+
+
+
+
+
+
+//     free(head);
+//     free(second);
+//     free(third);
+//     free(fourth);
+
+
+//     return 0;
+// }
+
+
+struct Node{
+    int data;
+    struct Node* next;
+};
+
+struct Node* createnode(int data){
+    struct Node* newnode = (struct Node*)malloc(sizeof(struct Node));
+    if(newnode == NULL){
+        printf("memory allocation failed\n");
+        return NULL;
+    }
+    newnode->data = data;
+    newnode->next = NULL;
+    return newnode;
+}
+
+
+
+struct Node* merge(struct Node* head, struct Node* head1){
+    if(head == NULL){
+        return head1;
+    }
+    if(head1 == NULL){
+        return head;
+    }
+
+    struct Node* sorting = NULL;
+    struct Node* newhead = NULL;
+
+    if(head->data >= head1->data){
+        newhead = head1;
+        head1 = newhead->next;
+    }
+    else{
+        newhead = head;
+        head = newhead->next;
+    }
+
+    sorting = newhead;
+
+    while(head && head1){
+        if(head->data >= head1->data){
+            sorting->next = head1;
+            head1 = head1->next;
+        }
+        else{
+            sorting->next = head;
+            head = head->next;
+        }
+        sorting = sorting->next;
+    }
+
+    if(head){
+        sorting->next = head;
+    }
+    if(head1){
+        sorting->next = head1;
+    }
+
+    return newhead;
+}
+
+int main(){
+    struct Node* head = createnode(1);
+    struct Node* second = createnode(3);
+    struct Node* third = createnode(5);
+
+    head->next = second;
+    second->next = third;
+
+
+
+    struct Node* head1 = createnode(2);
+    struct Node* second1 = createnode(4);
+    struct Node* third1 = createnode(6);
+
+    head1->next = second1;
+    second1->next = third1;
+
+    printf("Linked list\n");
+    traverselist(head);
+    return 0;
+}
