@@ -1201,13 +1201,111 @@ void sort(int arr[], int lwb, int upb){
     }
 }
 
+// int main(){
+
+//     int arr[5] = {1, 43, 22, 1, 3};
+//     sort(arr, 0, 4);
+
+//     for(int i = 0; i < 5; i++){
+//         printf("%d ", arr[i]);
+//     }
+//     return 0;
+// }
+
+
+// void countingsort(int arr[], int size){
+//     int max = 0;
+//     for(int i = 0; i < size; i++){
+//         if(arr[i] > max){
+//             max = arr[i];
+//         }
+//     }
+
+//     int brr[max + 1];
+//     for(int i = 0; i <= max; i++){
+//         brr[i] = 0;
+//     }
+
+//     for(int i = 0; i < size; i++){
+//         brr[arr[i]] += 1;
+//     }
+
+//     for(int i = 1; i <= max; i++){
+//         brr[i] = brr[i] + brr[i - 1];
+//     }
+
+//     int crr[size];
+//     for(int i = size - 1; i >= 0; i--){
+//         crr[brr[arr[i]] - 1] = arr[i];
+//         brr[arr[i]] -= 1;
+//     }
+
+//     for(int i = 0; i < size; i++){
+//         arr[i] = crr[i];
+//     }
+// }
+
+
+// int main(){
+//     int size = 10;
+//     int arr[] = {3,3,3,5,2,1,7,8,6,8};
+//     countingsort(arr, size);
+//     for(int i = 0; i < size; i++){
+//         printf("%d ", arr[i]);
+//     }
+//     return 0;
+// }
+
+
+int getmax(int arr[], int size){
+    int max = 0;
+    for(int i = 0; i < size; i++){
+        if(arr[i] > max){
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+void countsort(int arr[], int size, int exp){
+    int output[size];
+    int count[10] = {0};
+    for(int i = 0; i < size; i++){
+        count[(arr[i] / exp) % 10]+=1;
+    }
+
+    for(int i = 1; i <= 9; i++){
+        count[i] += count[i-1];
+    }
+
+    for(int i = size - 1; i >= 0; i--){
+        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+        count[(arr[i] / exp) % 10]--;
+    }
+
+
+    for(int i = 0; i < size; i++){
+        arr[i] = output[i];
+    }
+
+}
+
+
+void radixsort(int arr[], int size){
+    int max = getmax(arr, size);
+
+    for(int exp = 1; max/exp > 0; exp*=10){
+        countsort(arr, size, exp);
+    }
+}
+
+
 int main(){
+    int arr[] = {170, 45, 75, 90, 802, 24, 2, 66};
+    int size = sizeof(arr)/sizeof(arr[0]);
+    radixsort(arr, size);
 
-    int arr[5] = {1, 43, 22, 1, 3};
-    sort(arr, 0, 4);
-
-    for(int i = 0; i < 5; i++){
+    for(int i = 0; i < size; i++){
         printf("%d ", arr[i]);
     }
-    return 0;
 }

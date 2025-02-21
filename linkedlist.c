@@ -29,7 +29,7 @@ void traverselist(struct Node* head){
 
 struct Node* searchkey(struct Node* head, int key){
     struct Node* current = head;
-    while(current->data != NULL){
+    while(current != NULL){
         if(current->data == key){
             return current;
         }
@@ -41,8 +41,8 @@ struct Node* searchkey(struct Node* head, int key){
 
 void insertionatstart(struct Node** head, int data){
     struct Node* newnode = createnode(data);
-    newnode->next = head;
-    head = newnode;
+    newnode->next = *head;
+    *head = newnode;
 }
 
 
@@ -74,7 +74,7 @@ void insertatend(struct Node** head, int data){
         *head = newnode;
         return;
     }
-    struct Node* temp = head;
+    struct Node* temp = *head;
 
     while(temp->next != NULL){
         temp = temp->next;
@@ -84,7 +84,7 @@ void insertatend(struct Node** head, int data){
 
 
 void deletestart(struct Node** head){
-    if(head == NULL){
+    if(*head == NULL){
         printf("empty list\n");
         return;
     }
