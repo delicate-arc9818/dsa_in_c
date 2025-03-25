@@ -1089,13 +1089,6 @@
 
 
 
-
-
-
-
-
-
-
 void insertionsort(int arr[], int size){
     for(int i = 1; i < size; i++){
         int j = i-1;
@@ -1105,7 +1098,7 @@ void insertionsort(int arr[], int size){
                 arr[j+1] = arr[j];
             }
         }
-        arr[j] = temp;
+        arr[j+1] = temp;
     }
 }
 void merge(int arr[], int start, int mid, int end);
@@ -1300,12 +1293,100 @@ void radixsort(int arr[], int size){
 }
 
 
-int main(){
-    int arr[] = {170, 45, 75, 90, 802, 24, 2, 66};
-    int size = sizeof(arr)/sizeof(arr[0]);
-    radixsort(arr, size);
+// int main(){
+//     int arr[] = {170, 45, 75, 90, 802, 24, 2, 66};
+//     int size = sizeof(arr)/sizeof(arr[0]);
+//     radixsort(arr, size);
 
-    for(int i = 0; i < size; i++){
-        printf("%d ", arr[i]);
-    }
+//     for(int i = 0; i < size; i++){
+//         printf("%d ", arr[i]);
+//     }
+// }
+
+
+#define MAX 100
+
+typedef struct Stack{
+    int arr[MAX];
+    int top;
+}Stack;
+
+void initstack(Stack* s){
+    s->top = -1;
 }
+
+int isfull(Stack* s){
+    return s->top == MAX-1;
+}
+
+int isempty(Stack* s){
+    return s->top == -1;
+}
+
+void push(Stack*s, int data){
+    if(isfull(s)){
+        return;
+    }
+    s->arr[++s->top] = data;
+}
+
+int pop(Stack* s){
+    if(isempty(s)){
+        return;
+    }
+    return s->arr[s->top--];
+}
+
+int peek(Stack* s){
+    if(isempty(s)){
+        return;
+    }
+    return s->arr[s->top];
+}
+
+
+typedef struct {
+    int arr[MAX];
+    int front, rear;
+} Queue;
+
+void initQueue(Queue *q) {
+    q->front = -1;
+    q->rear = -1;
+}
+
+int isFull(Queue *q) {
+    return q->rear == MAX - 1;
+}
+
+int isEmpty(Queue *q) {
+    return q->front == -1 || q->front > q->rear;
+}
+
+void enqueue(Queue *q, int val) {
+    if (isFull(q)) {
+        printf("Queue Overflow\n");
+        return;
+    }
+    if (isEmpty(q)) {
+        q->front = 0;
+    }
+    q->arr[++q->rear] = val;
+}
+
+int dequeue(Queue *q) {
+    if (isEmpty(q)) {
+        printf("Queue Underflow\n");
+        return -1;
+    }
+    return q->arr[q->front++];
+}
+
+int front(Queue *q) {
+    if (isEmpty(q)) {
+        printf("Queue is Empty\n");
+        return -1;
+    }
+    return q->arr[q->front];
+}
+
